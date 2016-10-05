@@ -1,0 +1,35 @@
+<h1>Welcome <%= current_user.name %></h1>
+<h2>My Questions</h2>
+
+<table>
+<!-- headers -->
+  <tr>
+    <th>Questions</th>
+    <th>Action1</th>
+  </tr>
+
+<% @list_question.each do |x| %>
+<tr>
+<td>
+<%= x.question %>
+</td>
+<td>
+				<!-- delete -->
+				<form method="post" action="/questions/<%= x.id%>">
+				<input type="hidden" name="_method" value="delete">
+				<input type="submit" value="delete">
+				</form>
+</td>
+</tr>
+<% end %>
+
+</table>
+
+
+
+				<!-- update -->
+				<form method="post" action="/questions/:question_id">
+				<input type="hidden" name="_method" value="patch">
+				<input type="text" name="abc[:question]" required>
+				<input type="submit" value="update">
+				</form>

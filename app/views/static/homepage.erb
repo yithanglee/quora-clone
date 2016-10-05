@@ -3,3 +3,36 @@
 <form method="get" action="/users/:id/edit">
 <input value="Edit Profile" type="submit" />
 </form>
+
+<form method="get" action="/questions">
+<input value="My Questions" type="submit" />
+</form>
+
+<!-- create -->
+<form method="post" action="/questions">
+<input type="text" name="abc[:question]">
+<input type="submit" value="post new question">
+</form>
+
+<h1>Today's questions</h1>
+
+
+<table class="table">
+  <tr>
+    <th>Date</th>
+    <th>Question</th>
+    <th>Posted_by</th>
+    <th>Action</th>
+  </tr>
+	<% @questions.each do |a| %>
+			<tr>
+			<td><%= a.created_at %></td>
+			<td><%= a.question %></a></td> 
+			<td><%= a.user_id %></td>
+			<td></td>
+		</tr>
+	<% end %>
+</table>
+
+
+
