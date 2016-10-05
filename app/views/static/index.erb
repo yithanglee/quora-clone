@@ -10,3 +10,15 @@
 
 <p><%= @errors if @errors %></p>
 </center>
+
+<center>
+<h2>Login!</h2>
+
+<form method=post action=/login>
+<input type=text placeholder="email" name="user[email]"><br>
+<input type=password placeholder="password" name="user[password]"></br>
+<input type=submit value="login">
+</form>
+
+<p><%= @user if @user %></p>
+</center>
