@@ -18,11 +18,15 @@ end
 
 post '/login' do
 
-@user = User.oauthenticate(params["user"]["email"],params["user"]["password"])
-user = User.find_by(email: params["user"]["email"])
-session[:user_id] = user.id
-redirect '/homepage'
-
+@user_login = User.oauthenticate(params["user"]["email"],params["user"]["password"])
+	if @user_login == "success!"
+	@user_login = User.find_by(email: params["user"]["email"])
+	session[:user_id] = @user_login.id
+	redirect '/homepage'
+	else
+	@user_login
+  erb :"static/index"
+	end
 
 end
 
@@ -34,5 +38,16 @@ end
 
 
 post '/logout' do
+
+session[:user_id] = nil
+
+redirect '/'
+
+end
+
+
+get '/users/:id/edit' do
+
+erb :"static/user_profile"
 
 end

@@ -15,10 +15,10 @@
 <h2>Login!</h2>
 
 <form method=post action=/login>
-<input type=text placeholder="email" name="user[email]"><br>
-<input type=password placeholder="password" name="user[password]"></br>
+<input type=text placeholder="email" name="user[email]" required><br>
+<input type=password placeholder="password" name="user[password]" required></br>
 <input type=submit value="login">
 </form>
 
-<p><%= @user if @user %></p>
+<p><%= @user_login if @user_login %></p>
 </center>
