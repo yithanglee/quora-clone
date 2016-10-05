@@ -9,7 +9,7 @@ validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\
 
 
 	def self.oauthenticate(oemail, opassword)
-byebug
+
 a = self.find_by(email: oemail)
 
 		if oemail == a.email

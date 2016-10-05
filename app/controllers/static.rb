@@ -18,11 +18,17 @@ end
 
 post '/login' do
 
-# byebug
-
 @user = User.oauthenticate(params["user"]["email"],params["user"]["password"])
+user = User.find_by(email: params["user"]["email"])
+session[:user_id] = user.id
+redirect '/homepage'
 
-  erb :"static/index"
+
+end
+
+get '/homepage' do
+
+erb :"static/homepage"
 
 end
 
