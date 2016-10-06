@@ -7,6 +7,7 @@ post '/login' do
 	redirect '/homepage'
 	else
 	@user_login
+	return @current_user.to_json
   erb :"static/index"
 	end
 end

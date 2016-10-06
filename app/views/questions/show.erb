@@ -37,18 +37,18 @@ Recent answers
 <%= x.user.name%>
 </td>
 <td>
-<%= x.answervotes.where(vote_type: 1).count%>
+<div class="upvotes" id="<%= x.id%>"><%= x.answervotes.where(vote_type: 1).count%></div>
 </td>
 <td>
-<form method="post" action="/questions/<%= x.question.id%>/answers/<%= x.id %>/vote/up">
+<form class="upvotes" method="post" action="/questions/<%= x.question.id%>/answers/<%= x.id %>/vote/up">
 <input type="submit" value="up vote">
 </form>
 </td>
 <td>
-<%= x.answervotes.where(vote_type: 2).count%>
+<div class="downvotes" id="<%= x.id%>"><%= x.answervotes.where(vote_type: 2).count%></div>
 </td>
 <td>
-<form method="post" action="/questions/<%= x.question.id%>/answers/<%= x.id %>/vote/down">
+<form class="downvotes" method="post" action="/questions/<%= x.question.id%>/answers/<%= x.id %>/vote/down">
 <input type="submit" value="down vote">
 </form>
 </td>
