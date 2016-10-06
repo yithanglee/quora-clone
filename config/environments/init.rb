@@ -23,6 +23,7 @@ require 'uri'
 
 require 'bcrypt'
 require 'byebug'
+require 'sinatra/flash'
 ######################################################################
 
 

@@ -25,6 +25,9 @@ gem 'rake'
 gem 'rspec'
 gem 'byebug'
 gem 'bcrypt'
+gem 'sinatra-flash'
+
+
 
 group :development, :test do
 	# Adding shotgun for local web hosting

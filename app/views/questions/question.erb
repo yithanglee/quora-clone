@@ -1,0 +1,46 @@
+<h1>Question:</h1>
+<h2>
+<%= @current_question.question%>
+</h2>
+<h3>Posted by: <%= @current_question.user.name%></h3>
+		<!-- update -->
+		<form method="post" action="/questions/<%= @current_question.id%>">
+		<input type="hidden" name="_method" value="patch">
+		<input type="text" name="abc[:question]" required>
+		<input type="submit" value="update">
+		</form>
+
+		<form method="get" action="/questions">
+		<input type="submit" value="back">
+		</form>
+<%= @msg %>
+<h2>
+Recent answers
+</h2>
+
+<table>
+<!-- headers -->
+<tr>
+<th>Answers</th>
+<th>Posted by</th>
+</tr>
+<% @current_question.answers.each do |x|%>
+<tr>
+<td>
+<%= x.answer%>
+</td>
+<td>
+<%= x.user.name%>
+</td>
+</tr>
+<% end %>
+</table>
+
+<h3>
+Your answer:
+</h3>
+<!-- create -->
+<form method="post" action="/questions/<%= @current_question.id%>/answers/">
+<input type="text" name="user[:answer]">
+<input type="submit" value="post new answer">
+</form>

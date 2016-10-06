@@ -15,8 +15,6 @@
 </form>
 
 <h1>Today's questions</h1>
-
-
 <table class="table">
   <tr>
     <th>Date</th>
@@ -29,7 +27,11 @@
 			<td><%= a.created_at %></td>
 			<td><%= a.question %></a></td> 
 			<td><%= a.user_id %></td>
-			<td></td>
+			<td>
+			<form method="get" action="/questions/<%= a.id%>">
+			<input type="submit" value="view">
+			</form>	
+			</td>
 		</tr>
 	<% end %>
 </table>

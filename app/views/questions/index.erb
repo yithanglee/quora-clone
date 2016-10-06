@@ -1,4 +1,11 @@
 <h1>Welcome <%= current_user.name %></h1>
+<form method="get" action="/homepage">
+<input type="submit" value="home">
+</form>
+
+<form method="get" action="/users/<%= current_user.id%>/edit">
+<input value="Edit Profile" type="submit" />
+</form>
 <h2>My Questions</h2>
 
 <table>
@@ -6,6 +13,7 @@
   <tr>
     <th>Questions</th>
     <th>Action1</th>
+    <th>Action2</th>
   </tr>
 
 <% @list_question.each do |x| %>
@@ -20,6 +28,11 @@
 				<input type="submit" value="delete">
 				</form>
 </td>
+<td>
+	<form method="get" action="/questions/<%= x.id%>">
+	<input type="submit" value="view">
+	</form>
+</td>
 </tr>
 <% end %>
 
@@ -27,9 +40,36 @@
 
 
 
-				<!-- update -->
-				<form method="post" action="/questions/:question_id">
-				<input type="hidden" name="_method" value="patch">
-				<input type="text" name="abc[:question]" required>
-				<input type="submit" value="update">
+<h2>My Answers</h2>
+
+<table>
+<!-- headers -->
+  <tr>
+    <th>Answers</th>
+   
+    <th>Action1</th>
+    <th>Action2</th>
+  </tr>
+
+<% @list_answers.each do |b| %>
+<tr>
+<td>
+<%= b.answer %>
+</td>
+
+<td>
+
+				<%= b.question.question%>
+	
+</td>
+<td>
+				<!-- delete -->
+				<form method="post" action="/questions/<%= b.question.id%>/answers/<%= b.id%>">
+				<input type="hidden" name="_method" value="delete">
+				<input type="submit" value="delete">
 				</form>
+</td>
+</tr>
+<% end %>
+
+</table>
