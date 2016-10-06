@@ -50,20 +50,17 @@ patch '/questions/:question_id' do
 
 
 post '/questions/:question_id/vote' do
- # byebug
  @search = Vote.find_by(user_id:current_user.id, question_id:params["question_id"])
-
  	 if  @search.nil?
  	 	  @vote = Vote.new(user_id:current_user.id, question_id:params["question_id"], vote_type:1)
- 	 	@vote.save
- 	 		 redirect '/homepage'
+ 	 	 @vote.save
  	 else
  	  @search.destroy
-	 redirect '/homepage'
+ 	  # return @vote.to_json
  	 # end for if
  	 end 
-
+ 	 x = Vote.where(question_id:params["question_id"])
+ 	 	 	return x.to_json
 # end for post
 end
-
 
