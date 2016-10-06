@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
 	has_many :questions
 	has_many :answers
+	has_many :votes
+	has_many :answervotes
+	# has_many :questions, :through => :votes
 
 	has_secure_password validations: false
 

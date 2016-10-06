@@ -11,7 +11,7 @@ end
 get '/questions/:question_id' do
 
 	@current_question = Question.find(params[:question_id])
-	erb :"questions/question"
+	erb :"questions/show"
 end
 
 post '/questions' do
@@ -44,6 +44,26 @@ patch '/questions/:question_id' do
 		flash[:notice] = "you cant update this"
 	# erb :"questions/question"
 		redirect "/questions/#{@question.id}"
-	end
+		end
 	#end for patch
+	end
+
+
+post '/questions/:question_id/vote' do
+ # byebug
+ @search = Vote.find_by(user_id:current_user.id, question_id:params["question_id"])
+
+ 	 if  @search.nil?
+ 	 	  @vote = Vote.new(user_id:current_user.id, question_id:params["question_id"], vote_type:1)
+ 	 	@vote.save
+ 	 		 redirect '/homepage'
+ 	 else
+ 	  @search.destroy
+	 redirect '/homepage'
+ 	 # end for if
+ 	 end 
+
+# end for post
 end
+
+

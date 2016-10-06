@@ -21,6 +21,8 @@
     <th>Question</th>
     <th>Posted_by</th>
     <th>Action</th>
+    <th>Votes</th>
+    <th>Action2</th>
   </tr>
 	<% @questions.each do |a| %>
 			<tr>
@@ -31,6 +33,14 @@
 			<form method="get" action="/questions/<%= a.id%>">
 			<input type="submit" value="view">
 			</form>	
+			<td>
+				<%= a.votes.count %>
+			</td>
+			<td>
+						<form method="post" action="/questions/<%= a.id%>/vote">
+						<input type="submit" value="vote">
+						</form>
+			</td>
 			</td>
 		</tr>
 	<% end %>

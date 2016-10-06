@@ -5,9 +5,9 @@
 <h3>Posted by: <%= @current_question.user.name%></h3>
 		<!-- update -->
 		<form method="post" action="/questions/<%= @current_question.id%>">
-		<input type="hidden" name="_method" value="patch">
-		<input type="text" name="abc[:question]" required>
-		<input type="submit" value="update">
+			<input type="hidden" name="_method" value="patch">
+			<input type="text" name="abc[:question]" required>
+			<input type="submit" value="update">
 		</form>
 
 		<form method="get" action="/questions">
@@ -18,11 +18,15 @@
 Recent answers
 </h2>
 
-<table>
+<table class="table">
 <!-- headers -->
 <tr>
 <th>Answers</th>
 <th>Posted by</th>
+<th>Up Votes</th>
+<th>Action</th>
+<th>Down Votes</th>
+<th>Action</th>
 </tr>
 <% @current_question.answers.each do |x|%>
 <tr>
@@ -31,6 +35,22 @@ Recent answers
 </td>
 <td>
 <%= x.user.name%>
+</td>
+<td>
+<%= x.answervotes.where(vote_type: 1).count%>
+</td>
+<td>
+<form method="post" action="/questions/<%= x.question.id%>/answers/<%= x.id %>/vote/up">
+<input type="submit" value="up vote">
+</form>
+</td>
+<td>
+<%= x.answervotes.where(vote_type: 2).count%>
+</td>
+<td>
+<form method="post" action="/questions/<%= x.question.id%>/answers/<%= x.id %>/vote/down">
+<input type="submit" value="down vote">
+</form>
 </td>
 </tr>
 <% end %>

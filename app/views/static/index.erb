@@ -1,15 +1,5 @@
-<center>
-<h2>Sign up for an account!</h2>
-<form method=post action=/signup>
-<input type=text placeholder="username" name="user[name]"><br>
-<input type=text placeholder="email" name="user[email]"><br>
-<input type=password placeholder="password" name="user[password]"></br>
-<input type=submit value="sign up" class="btn btn-lg btn-default">
-</form>
-<p><%= @errors if @errors %></p>
-</center>
 
-<center>
+<div class="left-block">
 <h2>Login!</h2>
 <form method=post action=/login>
 <input type=text placeholder="email" name="user[email]" required><br>
@@ -17,4 +7,16 @@
 <input type=submit value="login" class="btn btn-lg btn-default">
 </form>
 <p><%= @user_login if @user_login %></p>
-</center>
+</div>
+
+<div class="separator"></div>
+
+<div class="right-block">
+<h2>Sign up for an account!</h2>
+<form method=post action=/signup>
+<input type=text placeholder="username" name="user[name]"><br>
+<input type=text placeholder="email" name="user[email]"><br>
+<input type=password placeholder="password" name="user[password]"></br>
+<input type=submit value="sign up" class="btn btn-lg btn-default">
+</form>
+</div>
