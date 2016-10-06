@@ -21,6 +21,7 @@ post '/questions' do
 	 redirect '/homepage'
 	else
 	# end for if
+	
 	end
 	# end for post question
 end
