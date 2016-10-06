@@ -26,7 +26,7 @@
 			<tr>
 			<td><%= a.created_at %></td>
 			<td><%= a.question %></a></td> 
-			<td><%= a.user_id %></td>
+			<td><%= a.user.name %></td>
 			<td>
 			<form method="get" action="/questions/<%= a.id%>">
 			<input type="submit" value="view">
